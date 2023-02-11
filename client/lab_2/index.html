@@ -1,10 +1,53 @@
-Replace this with your complete HTML from Lab 1
-
-Hook it up to CSS by including style.css in the <head> tag
-
-Then add CSS class names to your HTML to make it look like the lab pictures.
-For example: <div class="selector">
-
-You should not need to edit the CSS to do this, only the HTML.
-
-Don't forget to add an actual set of image descriptions to your image carousel.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will Byrne's lab 1</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"><h1>Will Byrne's Lab 1</h1></header>
+      <div class="container">
+        <div class="left_section box">
+            <div>
+                <header class="header"><h2>Album Names</h2></header>
+            </div>
+            <div class="box container">
+                <ol>
+                    <li>Duality - Set It Off</li>
+                    <li>This is War - 30 Secs to Mars</li>
+                    <li>To The End - Poor Mans Poison</li>
+                    <li>Science & Faith - The Script</li>
+                    <li>Bleed American - Jimmy Eat World</li>
+                </ol>
+            </div>
+        </div>
+        <div class="right_section box">
+          <header class="header"><h2>Image Carousel</h2></header>
+          <div class="grid">
+            <img src='images/mochi.gif' alt="GIF mochi" height="100px">
+            <img src='images/mochi.jpg' alt="JPG mochi" height="100px">
+            <img src='images/mochi.png' alt="PNG mochi" height="100px">
+            <img src='images/mochi.svg' alt="SVG mochi" height="100px">
+          </div>
+          <div class="box container">
+            <p>
+            The first image is a GIF(Graphics Interchange Format). Good for small animations.<br/>
+            The Second image is is JPG(Joint Photographic Group). Good for a ton of colors but not crazy file size.<br/>
+            The third is PNG(Portable Network Graphics). Similar to JGP but deals with opacity better.<br/>
+            The fourth is SVG(Scalable Vector Graphics). This is not a raster, and edges will remain crisp regardless of zoom level.<p>
+          </div>
+        </div>
+      </div>
+        <div class="wrapper">
+            <footer class="footer">Git Hub Account name: 
+            <a href="https://github.com/AtWillB" target="_blank" rel="noopener noreferrer">AtWillB  
+            </footer>
+        </div>
+      </div>   
+    </body>
+  </body>
+</html>
