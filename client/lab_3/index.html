@@ -1,5 +1,62 @@
 <!--
     Replace this with your working code from Lab 2, and include:
     - The styles in this folder's `style.css`
-    - The script in script.js, which should be included via a `<script src="script.js" >` call before your closing </body> tag 
--->
+    - The script in script.js, which should be included via a `<script src="script.js" >` call before your closing  tag -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will Byrne's lab 3</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Will Byrne's Lab 3</h1>
+        </header>
+        <div class="container">
+            <div class="left_section box">
+                <div>
+                    <header class="header"><h2>Album Names</h2></header>
+                </div>
+                <div class="box">
+                    <ol>
+                        <li>Duality - Set It Off</li>
+                        <li>This is War - 30 Secs to Mars</li>
+                        <li>To The End - Poor Mans Poison</li>
+                        <li>Science & Faith - The Script</li>
+                        <li>Bleed American - Jimmy Eat World</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="right_section box">
+                <h2>Image Carousel</h2>
+                <div class="carousel">
+                    <button class="prev">prev</button>
+                    <div class="slides">
+                      <img id="slide_1" src='images/monkey1.jpg' alt="1st monkey"/>
+                      <img id="slide_1" src='images/monkey2.jpg' alt="2nd monkey"/>
+                      <img id="slide_1" src='images/monkey3.jpg' alt="3rd monkey"/>
+                      <img id="slide_1" src='images/monkey4.jpg' alt="4th monkey"/>
+                    </div>
+                    <button class="next">prev</button>
+                </div>
+                <div class="box">
+                    <p>
+                        The above images are all monkeys that are 1024x1024 pixels.<br/> 
+                        I just grabbed them off of google images
+                    <p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <footer class="footer">Git Hub Account name:<a href="https://github.com/AtWillB" target="_blank" rel="noopener noreferrer">AtWillB</footer>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
