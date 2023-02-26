@@ -30,7 +30,7 @@ body {
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: rgb(239, 239, 239);
+  background-color: rgb(100 19 185);
 }
 
 
@@ -39,7 +39,7 @@ a {
   text-decoration: none;
 }
 
-h2 {
+h2, h3 {
   margin:0;
   padding:0;
   padding-bottom:1.5rem;
@@ -68,7 +68,7 @@ form {
 .container {
   margin: 0 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: start;
   flex:1;
 }
@@ -92,7 +92,7 @@ form {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: #ffe08a;
+  background-color: #ffbf8a;
   color: #4a4a4a;
 
   /* shapes */
@@ -100,6 +100,8 @@ form {
   font-size: 1.5rem;
   padding: 1.25rem;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  border: 2px dashed;
+  border-radius: 4px;
 
 
   /* box-shadows are fancy */
@@ -128,18 +130,19 @@ form {
 }
 
 .left_section {
-  background-color: rgba(0, 139, 139, 0.8);
+  background-color: rgba(42, 145, 214, 0.8);
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
 }
 
 .right_section {
-  background-color: rgba(255, 224, 138, 0.7);
+  background-color: rgba(42, 145, 214, 0.8);
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
-  max-width: 450px;
+  display: flex;
+  flex-direction: column;
 }
 
 /*
@@ -151,13 +154,15 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgba(0, 139, 139, 0.8);
+  background-color: #ef8d3d;
   font-size: 1.2rem;
   font-weight: 600;
+  border: 2px dashed;
+  border-radius: 4px;
 }
 
 .footer a {
-  color: rgba(255, 224, 138, 1);
+  /* color: rgba(255, 224, 138, 1); */
   text-decoration: underline;
 }
 
@@ -179,93 +184,6 @@ form {
   margin: 0px;
   margin-bottom: 5px;
 }
-
-
-/* Deploy this with images as direct "children" and the images should pop into shape */
-.grid {
-  display: flex;
-  justify-content: space-evenly;
-  flex-flow: wrap;
-  width: 350px;
-  height: 350px;
-  margin: 0 auto;
-}
-
-.grid img {
-  width: 150px;
-  height: 150px;
-}
-
-
-/* Carousel */
-div.carousel {
-  max-width: 300px;
-  overflow: hidden;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-}
-
-.carousel .slides {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* .carousel_item, */
-.hidden {
-  display: none;
-}
-
-.visible {
-  display: block;
-}
-
-.carousel_item img {
-  /* 
-    Setting width, rather than max-width or min-width,
-    means annoying pop-ins won't happen
-    but it also means you need to format your images to be compatible
-    or they will stretch weird
-
-    - try a tall one and see what happens
-    - change the height on a fixed image size and see what happens
-    - now make sure that images are _always_ square
-    - ... there's a reason crop tools are popular in image editors
-   */
-  width: 150px; 
-}
-
-.prev,
-.next {
-  border: none;
-  margin: 2px;
-  text-align: center;
-  border-radius: 5px;
-  font-weight: bold;
-  height: 45px;
-  padding: 10px;
-  line-height: 0; /* This centers a button's text! */
-  border: 2px solid rgb(99,99,99); /* shorthand for how to do a border */
-}
-
-.prev:focus,
-.next:focus {
-  margin: 0;
-  /* Pick a good border colour and check out how it works with your buttons */
-}
-
-.prev:hover,
-.next:hover {
-  /* Pick a good background colour for your hover pseudoclass */
-}
-
 
 
 
@@ -303,6 +221,28 @@ form input {
     /* Rules in here will only apply when a screen is the correct size */
     /* check it out by using your developer tools to shrink your screen-size */
     .container {
-      background-color: rgba(204, 8, 162, 0.65);
+      background-color: rgba(238, 69, 201, 0.65);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+    .right_section {
+      /* background-color: rgba(255, 224, 138, 0.7); */
+      flex: 1 2 auto;
+      margin: 1rem;
+      align-items: start;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .left_section {
+    /* background-color: rgba(0, 139, 139, 0.8); */
+    flex: 0 1 auto;
+    margin: 1rem;
+    padding: 1.5rem;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    }
+
 }
