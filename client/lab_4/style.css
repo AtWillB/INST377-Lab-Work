@@ -30,7 +30,8 @@ body {
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: rgb(239, 239, 239);
+  background-color: rgb(130, 237, 233);
+  color: rgb(236, 9, 9)
 }
 
 
@@ -154,7 +155,7 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  /* background-color: rgba(0, 139, 139, 0.8); */
+  background-color: rgba(15, 20, 159, 0.8);
   font-size: 1.2rem;
   font-weight: 600;
   border: 2px dashed;
@@ -162,7 +163,7 @@ form {
 }
 
 .footer a {
-  /* color: rgba(255, 224, 138, 1); */
+  color: rgb(231, 9, 183);
   text-decoration: underline;
 }
 
