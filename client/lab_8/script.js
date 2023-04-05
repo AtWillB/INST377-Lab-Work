@@ -1,11 +1,3 @@
-// Leaflet can be a bit old-fashioned.
-// Here's some code to remove map markers.
-// map.eachLayer((layer) => {
-//   if (layer instanceof L.Marker) {
-//     layer.remove();
-//   }
-// });
-
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -42,11 +34,37 @@ function filterList(list, query) {
   });
 }
 
+function initMap() {
+  const carto = L.map('map').setView([38.989, -76.937], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(carto);
+  return carto;
+}
+
+function markerPlace(array, map) {
+  console.log('array for markers', array);
+
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+  
+  array.forEach((item) => {
+    console.log('markerPlace', item);
+    const {coordinates} = item.geocoded_column_1;
+
+    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+  })
+}
+
 async function mainEvent() {
   // the async keyword means we can make API requests
   const mainForm = document.querySelector(".main_form"); // This class name needs to be set on your form before you can listen for an event on it
-  const filterButton = document.querySelector("#filter");
   const loadDataButton = document.querySelector("#data_load");
+  const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
   const textField = document.querySelector("#resto");
 
@@ -54,8 +72,13 @@ async function mainEvent() {
   loadAnimation.style.display = "none";
   generateListButton.classList.add("hidden");
 
-  let storedList = [];
+  const carto = initMap();
+
+  let pasrsedData = JSON.parse(localStorage.getItem("storedData"));
   let currentList = []; // this is "scoped" to the main event function
+  if (pasrsedData?.length > 0 ) {
+    generateListButton.classList.remove("hidden");
+  }
 
   loadDataButton.addEventListener("click", async (submitEvent) => {
     // async has to be declared on every function that needs to "await" something
@@ -66,33 +89,25 @@ async function mainEvent() {
     const results = await fetch(
       "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
     );
-    storedList = await results.json();
-    if (storedList.length > 0) {
-        generateListButton.classList.remove("hidden");
+
+    const storedList = await results.json();
+    localStorage.setItem("storedData", JSON.stringify(storedList));
+    pasrsedData = storedList;
+    if (pasrsedData?.length > 0 ) {
+      generateListButton.classList.remove("hidden");
     }
 
     console.table(storedList);
     loadAnimation.style.display = "none";
   });
 
-  filterButton.addEventListener("click", async (event) => {
-    console.log("clicked FilterButton");
-
-    const formData = new FormData(mainForm);
-    const formProps = Object.fromEntries(formData);
-
-    console.log(formProps);
-    const newList = filterList(currentList, formProps.resto);
-
-    console.log(newList);
-    injectHTML(newList);
-  });
-
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
-    currentList = cutRestaurantList(storedList);
+
+    currentList = cutRestaurantList(pasrsedData);
     console.log(currentList);
     injectHTML(currentList);
+    markerPlace(currentList, carto);
   });
 
   textField.addEventListener("input", (event) => {
@@ -100,6 +115,13 @@ async function mainEvent() {
     const newList = filterList(currentList, event.target.value);
     console.log(newList);
     injectHTML(newList);
+    markerPlace(newList, carto);
+  });
+
+  clearDataButton.addEventListener("click", (event) => {
+    console.log("clear browser data");
+    localStorage.clear();
+    console.log("Local Storage check: ",localStorage.getItem("StoredData"));
   });
 }
 
